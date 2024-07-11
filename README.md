@@ -44,10 +44,6 @@ This project focuses on developing a machine learning application for predicting
    ```bash
    cd src
    ```
-3. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 ## Usage
 1. **Data Preparation**: Ensure the dataset is in the correct format as required by the scripts.
