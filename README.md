@@ -63,6 +63,12 @@ This project focuses on developing a machine learning application for predicting
    ```bash
    npm install
    ```
+    ```bash
+   npm install axios
+   ```
+   ```bash
+   npm install react-router-dom
+   ```
 2. Run the development server:
     ```bash
     npm run dev
