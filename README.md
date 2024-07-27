@@ -42,12 +42,8 @@ This project focuses on developing a machine learning application for predicting
     ```
 
 ## Running the Project
-1. **Unzip the `neuralTox` folder**:
-    ```bash
-    unzip neuralTox.zip
-    ```
    
-2. **Navigate to the `neuralTox` directory**:
+1. **Navigate to the `neuralTox` directory**:
     ```bash
     cd neuralTox
     ```
