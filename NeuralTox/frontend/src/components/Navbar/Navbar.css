@@ -1,0 +1,35 @@
+.custom-navbar {
+  background-color: #5ab9ea; /* Light blue background for the navbar */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: #ffffff; /* White text color for better contrast */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Larger font size for the brand */
+  font-weight: bold; /* Bold text for prominence */
+  margin-left: 10px; /* Margin for spacing */
+}
+
+.form-heading{
+  color: #5ab9ea;
+}
+.headings{
+  color: #5ab9ea;
+}
+.nav-item {
+  margin-left: 10px; /* Horizontal spacing between items */
+  margin-right: 10px; /* Horizontal spacing between items */
+}
+
+.custom-navbar .nav-link:hover {
+  color: #2b3f9f; /* Darker blue on hover */
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on hover */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-color: #c1c8e4; /* Light violet color for the hamburger icon */
+}

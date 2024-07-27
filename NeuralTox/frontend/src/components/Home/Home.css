@@ -1,0 +1,6 @@
+.home-container {
+  background: linear-gradient(to bottom right, #84ceeb, #4a54f1); /* Gradient from Sky Blue to Deep Blue */
+  background-repeat: no-repeat; /* Prevent the gradient from repeating */
+  background-size: cover; /* Ensure the gradient covers the container */
+  background-position: center; /* Center the gradient */
+}

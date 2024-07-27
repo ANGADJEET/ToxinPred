@@ -1,0 +1,16 @@
+/* Footer styling */
+.footer-container {
+  color: #ffffff; /* White text color */
+  padding: 20px; /* Padding for spacing */
+
+}
+
+.footer-link {
+  color: #5ab9ea; /* Light blue for links */
+  text-decoration: none; /* Remove underline by default */
+}
+
+.footer-link:hover {
+  color: #c1c8e4; /* Light violet on hover */
+  text-decoration: underline; /* Underline links on hover */
+}

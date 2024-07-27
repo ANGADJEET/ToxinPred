@@ -1,0 +1,63 @@
+/* Style for info cards */
+.info-card {
+  background: white; /* Deep blue (Blueberry) */
+  border-radius: 8px; /* Rounded corners for card */
+}
+
+.abstract-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+/* Style for card titles */
+.card-title {
+  color: #5ab9ea; /* Light blue (Sky Blue) */
+}
+
+/* Style for card text */
+.card-text {
+  color: #9b9bcb; /* Light violet (Amethyst) */
+}
+
+.custom-card .card-body {
+height: 200px;
+margin-top: 100px;
+}
+
+
+/* Basic styling for info cards */
+.info-card {
+  background: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.custom-card {
+  background: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-card:hover {
+  transform: scale(1.05); /* Slightly enlarges the card */
+  color: #4a54f1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adds a deeper shadow */
+}
+.info-title{
+  color: #5ab9ea;
+}
+/* Optional: Add a smooth transition for card hover effect */
+.card-body {
+  padding: 1.5rem;
+}
+
+.info-msg{
+  color: #9b9bcb;
+}
+
