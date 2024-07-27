@@ -17,14 +17,6 @@ This project focuses on developing a machine learning application for predicting
 - Deep learning model chosen for its superior performance in this domain.
 - Implemented with Bayesian optimization for hyperparameter tuning.
 
-### XGBoost
-- Gradient boosting framework used as a baseline model.
-- Known for its efficiency and performance in structured data.
-
-### Logistic Regression
-- Simple yet effective model used for comparison.
-- Provides a benchmark for evaluating the performance of more complex models.
-
 ## Evaluation Metrics
 - **Accuracy**: Percentage of correctly predicted instances.
 - **Precision**: Proportion of true positive predictions among all positive predictions.
