@@ -67,12 +67,14 @@ This project focuses on developing a machine learning application for predicting
     cd ..
     cd frontend
     ```
-
+2. If running for the first time or the node modules folder is not there
+   ```bash
+   npm install
+   ```
 2. Run the development server:
     ```bash
     npm run dev
     ```
-
 3. Click on the provided link to access the application.
 
 ## Acknowledgements
