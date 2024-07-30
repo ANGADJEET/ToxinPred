@@ -18,6 +18,7 @@
 
 .custom-alert{
   text-align: center;
+  background-color: rgba(57, 237, 237, 0.5);
 }
 .custom-container{
   background-color: #f8f9fa;

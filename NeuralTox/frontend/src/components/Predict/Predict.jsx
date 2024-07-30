@@ -2,7 +2,16 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Predict.css";
 import axios from "axios";
-import { Spinner, Container, Form, Button, Alert, Row, Col, Card } from "react-bootstrap";
+import {
+  Spinner,
+  Container,
+  Form,
+  Button,
+  Alert,
+  Row,
+  Col,
+  Card,
+} from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
@@ -21,10 +30,13 @@ const Predict = () => {
     setLoadingSingle(true);
     setResult(null); // Clear previous results
     try {
-      const response = await axios.post("http://localhost:5000/make-prediction", data);
+      const response = await axios.post(
+        "http://localhost:5000/make-prediction",
+        data
+      );
 
       if (response.data && response.data.prediction) {
-        setResult({ type: 'single', value: response.data.prediction });
+        setResult({ type: "single", value: response.data.prediction });
         setError(null);
       } else {
         setError("Unexpected response structure");
@@ -47,12 +59,16 @@ const Predict = () => {
     setLoadingFile(true);
     setResult(null);
     try {
-      const response = await axios.post("http://localhost:5000/make-prediction-file", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        "http://localhost:5000/make-prediction-file",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       if (response.data && response.data.predictions) {
-        setResult({ type: 'batch', value: response.data.predictions });
+        setResult({ type: "batch", value: response.data.predictions });
         setError(null);
       } else {
         setError("Unexpected response structure");
@@ -72,9 +88,14 @@ const Predict = () => {
       <Navbar />
       <Card className="custom-title-card">
         <Card.Body>
-          <Card.Title className="text-center custom-title">NeuralTox Predictor</Card.Title>
+          <Card.Title className="text-center custom-title">
+            NeuralTox Predictor
+          </Card.Title>
           <Card.Text className="text-center custom-text">
-            Enter a SMILES string to predict the molecular toxicity of a single compound, or upload a CSV file containing multiple SMILES strings for batch predictions. Our advanced deep learning model will analyze the input and provide accurate toxicity predictions.
+            Enter a SMILES string to predict the molecular toxicity of a single
+            compound, or upload a CSV file containing multiple SMILES strings
+            for batch predictions. Our advanced deep learning model will analyze
+            the input and provide accurate toxicity predictions.
           </Card.Text>
         </Card.Body>
       </Card>
@@ -84,8 +105,12 @@ const Predict = () => {
             <Col md={6} className="mx-auto">
               <Card className="shadow-sm custom-card">
                 <Card.Body>
-                  <Card.Title className="text-center">Predict for a single molecule</Card.Title>
-                  <Card.Text className="text-center">Example Input: C1=CC=CC=C1 (Benzene)</Card.Text>
+                  <Card.Title className="text-center">
+                    Predict for a single molecule
+                  </Card.Title>
+                  <Card.Text className="text-center">
+                    Example Input: C1=CC=CC=C1 (Benzene)
+                  </Card.Text>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="smile" className="mb-3">
                       <Form.Label>Make Prediction!</Form.Label>
@@ -109,11 +134,11 @@ const Predict = () => {
                         </Spinner>
                       </div>
                     )}
-                    {error && (
+                    {/* {error && (
                       <Alert variant="danger" className="mt-3">
                         {error}
                       </Alert>
-                    )}
+                    )} */}
                   </Form>
                 </Card.Body>
               </Card>
@@ -126,7 +151,9 @@ const Predict = () => {
             <Col md={6} className="mx-auto">
               <Card className="shadow-sm custom-card">
                 <Card.Body>
-                  <Card.Title className="text-center">Or Submit a CSV File</Card.Title>
+                  <Card.Title className="text-center">
+                    Or Submit a CSV File
+                  </Card.Title>
                   <Form onSubmit={handleFileSubmit}>
                     <Form.Group controlId="file" className="mb-3">
                       <Form.Label>Upload CSV</Form.Label>
@@ -148,11 +175,6 @@ const Predict = () => {
                         </Spinner>
                       </div>
                     )}
-                    {error && (
-                      <Alert variant="danger" className="mt-3">
-                        {error}
-                      </Alert>
-                    )}
                   </Form>
                 </Card.Body>
               </Card>
@@ -166,14 +188,18 @@ const Predict = () => {
               <Col md={6} className="mx-auto">
                 <Card className="shadow-sm">
                   <Card.Body>
-                    <Card.Title className="text-center">Prediction Results</Card.Title>
+                    <Card.Title className="text-center">
+                      Prediction Results
+                    </Card.Title>
                     <Alert variant="success custom-alert">
                       {result.type === "single" ? (
                         <p>The molecule is {result.value}</p>
                       ) : (
                         <ul>
                           {result.value.map((res, index) => (
-                            <li key={index}>Molecule {index + 1} is {res}</li>
+                            <li key={index}>
+                              Molecule {index + 1} is {res}
+                            </li>
                           ))}
                         </ul>
                       )}
@@ -183,6 +209,11 @@ const Predict = () => {
               </Col>
             </Row>
           </Container>
+        )}
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
         )}
       </div>
       <Footer />
