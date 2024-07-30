@@ -74,7 +74,7 @@ const Predict = () => {
         <Card.Body>
           <Card.Title className="text-center custom-title">NeuralTox Predictor</Card.Title>
           <Card.Text className="text-center custom-text">
-            Enter a SMILES string to predict the molecular activity of a single compound, or upload a CSV file containing multiple SMILES strings for batch predictions. Our advanced deep learning model will analyze the input and provide accurate activity predictions.
+            Enter a SMILES string to predict the molecular toxicity of a single compound, or upload a CSV file containing multiple SMILES strings for batch predictions. Our advanced deep learning model will analyze the input and provide accurate toxicity predictions.
           </Card.Text>
         </Card.Body>
       </Card>
