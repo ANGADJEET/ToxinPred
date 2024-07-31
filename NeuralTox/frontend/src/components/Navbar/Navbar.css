@@ -9,6 +9,16 @@
 .custom-navbar .nav-link {
   color: #ffffff; /* White text color for better contrast */
 }
+.custom-image{
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.custom-logo{
+  width: 40px;
+  height: 40px;
+}
 
 .navbar-brand {
   font-size: 1.5rem; /* Larger font size for the brand */

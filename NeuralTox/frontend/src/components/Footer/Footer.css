@@ -76,6 +76,12 @@
   color: #1a202c;
 }
 
+
+.custom-footer-image{
+  width: 25px;
+  height: 20px;
+}
+
 img {
   max-width: 100%;
   height: auto;
