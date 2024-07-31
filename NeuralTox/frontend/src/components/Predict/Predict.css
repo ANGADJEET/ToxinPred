@@ -18,6 +18,8 @@
 
 .custom-alert{
   text-align: center;
+  background-color: transparent;
+  border : none;
 }
 .custom-container{
   background-color: #f8f9fa;

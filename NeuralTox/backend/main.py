@@ -22,9 +22,10 @@ def generate_features(smile):
     try:
         print_stylish_message("Generating RDKit features...")
         rdkit_features_df = generate_rdkit_features(smile)
+        print("rdkit_features_df shape: ", rdkit_features_df.shape)
         print_stylish_message("Generating PaDEL features...")
         padel_features_df = generate_padel_features(smile)
-
+        print("padel_features_df shape: ", padel_features_df.shape)
         if rdkit_features_df is None or padel_features_df is None:
             print("Error: Either RDKit or PaDEL features are None.")
             return None

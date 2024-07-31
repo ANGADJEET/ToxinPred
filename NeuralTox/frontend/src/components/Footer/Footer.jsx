@@ -1,6 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css';
-
+import iiitd from "../../assets/icons/iiitd.png";
+import facebook from "../../assets/icons/facebook.png";
+import twitter from "../../assets/icons/twitter.png";
+import linkedin from "../../assets/icons/linkedin.png";
 const Footer = () => {
   return (
     <footer className="Contact">
@@ -9,7 +12,7 @@ const Footer = () => {
             <div className="panel">
               <div className="content text-center">
                 <p>
-                  <img alt="IIITD Logo" src="https://your-online-url/iiitd.png" />
+                  <img alt="IIITD Logo" src={iiitd} />
                 </p>
                 <p>
                   Copyright &copy; 2022 &nbsp; All rights reserved.
@@ -39,13 +42,13 @@ const Footer = () => {
                 </p>
                 <p>
                   <a target="_blank" href="https://www.facebook.com/ganesh.bagler" rel="noopener noreferrer">
-                    <img src="https://your-online-url/facebook.png" alt="Facebook" />
+                    <img src= {facebook}alt="Facebook" className='custom-footer-image' />
                   </a>
                   <a target="_blank" href="https://twitter.com/gansbags" rel="noopener noreferrer">
-                    <img src="https://your-online-url/twitter.png" alt="Twitter" />
+                    <img src={twitter} alt="Twitter" className='custom-footer-image' />
                   </a>
                   <a target="_blank" href="https://www.linkedin.com/in/ganeshbagler" rel="noopener noreferrer">
-                    <img src="https://your-online-url/linkedin.png" alt="LinkedIn" />
+                    <img src={linkedin} alt="LinkedIn" className='custom-footer-image'/>
                   </a>
                 </p>
               </div>
