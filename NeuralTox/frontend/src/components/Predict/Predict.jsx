@@ -134,11 +134,6 @@ const Predict = () => {
                         </Spinner>
                       </div>
                     )}
-                    {/* {error && (
-                      <Alert variant="danger" className="mt-3">
-                        {error}
-                      </Alert>
-                    )} */}
                   </Form>
                 </Card.Body>
               </Card>
