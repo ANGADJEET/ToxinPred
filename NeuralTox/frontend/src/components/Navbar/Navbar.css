@@ -2,7 +2,6 @@
   background-color: #2fd5e1; /* Light blue background for the navbar */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjust shadow size and color as needed */
   transition: background-color 0.1s ease; /* Smooth transition for background color */
-
 }
 
 .custom-navbar .navbar-brand,
@@ -35,11 +34,13 @@
 .nav-item {
   margin-left: 10px; /* Horizontal spacing between items */
   margin-right: 10px; /* Horizontal spacing between items */
+  display: flex;
+  padding : 5px;
 }
 
-.custom-navbar .nav-link:hover {
-  color: #2b3f9f; /* Darker blue on hover */
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on hover */
+.custom-navbar .nav-item:hover {
+  color: white; /* Darker blue on hover */
+  background-color: rgba(255, 255, 255, 0.3); /* Slightly lighter background on hover */
 }
 
 .custom-navbar .navbar-toggler-icon {
