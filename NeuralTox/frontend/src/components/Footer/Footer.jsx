@@ -4,6 +4,7 @@ import iiitd from "../../assets/icons/iiitd.png";
 import facebook from "../../assets/icons/facebook.png";
 import twitter from "../../assets/icons/twitter.png";
 import linkedin from "../../assets/icons/linkedin.png";
+
 const Footer = () => {
   return (
     <footer className="Contact">

@@ -2,6 +2,7 @@
   background-color: #2fd5e1; /* Light blue background for the navbar */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjust shadow size and color as needed */
   transition: background-color 0.1s ease; /* Smooth transition for background color */
+  position: relative;
 }
 
 .custom-navbar .navbar-brand,
