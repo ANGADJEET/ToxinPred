@@ -1,10 +1,12 @@
+import React, { useEffect } from 'react';
+import Home from '../Home/Home';
 
 const CoSysLab = () => {
-  return (
-    <div>
-      CoSysLab
-    </div>
-  )
-}
+  useEffect(() => {
+    window.open("https://cosylab.iiitd.edu.in/", "_blank");
+  }, []);
 
-export default CoSysLab
+  return <Home />; // Render the Home component
+};
+
+export default CoSysLab;

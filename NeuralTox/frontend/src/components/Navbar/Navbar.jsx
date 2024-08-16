@@ -9,6 +9,8 @@ import github from "../../assets/icons/github.png";
 import contact from "../../assets/icons/contact.png";
 import cosyslab from "../../assets/icons/cosyslab.png";
 import logo from "../../assets/icons/logo.png";
+
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg sticky-top custom-navbar">

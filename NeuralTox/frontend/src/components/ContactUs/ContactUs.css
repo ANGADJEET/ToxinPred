@@ -1,0 +1,52 @@
+/* ContactUs.css */
+
+.fluid-container {
+    background-color: #fff;
+    margin-top: 0%;
+  }
+
+  .container {
+    max-width: 200vb;
+    padding-left:50px;
+    padding-right: 50px;
+  }
+  
+  .jumbotron {
+    padding: 0.75em 2em;
+  }
+  
+  .tab-content {
+    padding: 1em;
+  }
+  
+  h5 {
+    font-size: 1.25em;
+    margin: 0;
+    color: #2fd5e1;
+  }
+  
+  p {
+    max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  color:#6c757d;
+
+  }
+  
+  iframe {
+    min-height: 500px;
+    width: 100%;
+    border: 0;
+  }
+  
+  @media (max-width: 767px) {
+    .container {
+      padding: 0 10px;
+    }
+  
+    .jumbotron {
+      padding: 0.75em 1em;
+    }
+  }
+  
