@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 import home from "../../assets/icons/home.png";
-import about from "../../assets/icons/about.png";
 import predict from "../../assets/icons/predict.png";
 import howToUse from "../../assets/icons/instruction.png";
 import github from "../../assets/icons/github.png";
@@ -39,12 +38,6 @@ const Navbar = () => {
               <img src={home} alt="Home-Image" className="custom-image" />
               <Link className="nav-link" to="/">
                 Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <img src={about} alt="About-Image" className="custom-image" />
-              <Link className="nav-link" to="/about">
-                About
               </Link>
             </li>
             <li className="nav-item">

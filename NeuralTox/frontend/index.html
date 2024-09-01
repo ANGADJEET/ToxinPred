@@ -1,5 +1,4 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,9 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeuralTox</title>
     <link
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
     />
+    
+    <!-- Include JSME script -->
+    <script type="text/javascript" language="javascript" src="/jsme/jsme/jsme.nocache.js"></script>
+
+    <!-- Define the global function for JSME initialization -->
+    <script>
+      // This function will be called after the JSME script has loaded
+      function jsmeOnLoad() {
+        window.jsmeApplet = new JSApplet.JSME("jsme_container", "380px", "340px");
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
