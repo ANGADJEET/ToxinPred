@@ -17,11 +17,12 @@
 }
 
 .custom-alert{
+  padding: 20px;
   text-align: center;
-  background-color: transparent;
-  border : none;
 }
 .custom-container{
   background-color: #f8f9fa;
   padding: 20px;
+  height: 300 px;
+  justify-content: center;
 }
