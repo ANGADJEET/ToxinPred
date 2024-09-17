@@ -1,19 +1,15 @@
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./Predict.css";
+import { Container, Row, Col, Card, Spinner, Alert } from "react-bootstrap";
 import axios from "axios";
-import {
-  Spinner,
-  Container,
-  Form,
-  Button,
-  Alert,
-  Row,
-  Col,
-  Card,
-} from "react-bootstrap";
+import CustomNavbar from "../Navbar/Navbar";
+import PredictionTabs from "./PredictionTabs/PredictionTabs";
+import SinglePredictionForm from "./SinglePredictionForm/SinglePredictionForm";
+import BatchPredictionForm from "./BatchPredictionForm/BatchPredictionForm";
+import MiniBatchPredictionForm from "./MiniBatchPredictionForm/MiniBatchPredictionForm";
+import Results from "./Results/Results";
 import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
+import JsmeSketcher from "../JsmeSketcher/JsmeSketcher";
+import "./Predict.css";
 
 const Predict = () => {
   const [smile, setSmile] = useState("");
@@ -21,30 +17,22 @@ const Predict = () => {
   const [error, setError] = useState(null);
   const [loadingSingle, setLoadingSingle] = useState(false);
   const [loadingFile, setLoadingFile] = useState(false);
+  const [loadingMiniBatch, setLoadingMiniBatch] = useState(false);
+  const [loadingDrawing, setLoadingDrawing] = useState(false);
   const [file, setFile] = useState(null);
+  const [miniBatch, setMiniBatch] = useState("");
+  const [activeTab, setActiveTab] = useState("single");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { smile };
-
     setLoadingSingle(true);
-    setResult(null); // Clear previous results
+    setResult(null);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/make-prediction",
-        data
-      );
-
-      if (response.data && response.data.prediction) {
-        setResult({ type: "single", value: response.data.prediction });
-        setError(null);
-      } else {
-        setError("Unexpected response structure");
-        setResult(null);
-      }
+      const response = await axios.post("http://localhost:5000/make-prediction", { smile });
+      setResult({ type: "single", value: response.data.prediction });
+      setError(null);
     } catch (error) {
-      console.error("There was an error making the prediction!", error);
-      setError("There was an error making the prediction!");
+      setError("Error making prediction!");
       setResult(null);
     } finally {
       setLoadingSingle(false);
@@ -55,162 +43,116 @@ const Predict = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
-
     setLoadingFile(true);
     setResult(null);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/make-prediction-file",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-
-      if (response.data && response.data.predictions) {
-        setResult({ type: "batch", value: response.data.predictions });
-        setError(null);
-      } else {
-        setError("Unexpected response structure");
-        setResult(null);
-      }
+      const response = await axios.post("http://localhost:5000/make-prediction-file", formData);
+      setResult({ type: "batch", value: response.data.predictions });
+      setError(null);
     } catch (error) {
-      console.error("There was an error making the prediction!", error);
-      setError("There was an error making the prediction!");
+      setError("Error making batch prediction!");
       setResult(null);
     } finally {
       setLoadingFile(false);
     }
   };
 
+  const handleMiniBatchSubmit = async (e) => {
+    e.preventDefault();
+    setLoadingMiniBatch(true);
+    setResult(null);
+    try {
+      const response = await axios.post("http://localhost:5000/make-prediction-mini-batch", { smiles: miniBatch.split("\n") });
+      setResult({ type: "miniBatch", value: response.data.predictions });
+      setError(null);
+    } catch (error) {
+      setError("Error making mini-batch prediction!");
+      setResult(null);
+    } finally {
+      setLoadingMiniBatch(false);
+    }
+  };
+
+  const handleDrawingSubmit = async (smiles) => {
+    setLoadingDrawing(true);
+    setResult(null);
+    try {
+      const response = await axios.post("http://localhost:5000/make-prediction", { smile: smiles });
+      setResult({ type: "single", value: response.data.prediction });
+      setError(null);
+    } catch (error) {
+      setError("Error making prediction from drawing!");
+      setResult(null);
+    } finally {
+      setLoadingDrawing(false);
+    }
+  };
+
   return (
     <>
-      <Navbar />
-      <Card className="custom-title-card">
-        <Card.Body>
-          <Card.Title className="text-center custom-title">
-            NeuralTox Predictor
-          </Card.Title>
-          <Card.Text className="text-center custom-text">
-            Enter a SMILES string to predict the molecular toxicity of a single
-            compound, or upload a CSV file containing multiple SMILES strings
-            for batch predictions. Our advanced deep learning model will analyze
-            the input and provide accurate toxicity predictions.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <div className="custom-container">
-        <Container className="mt-5">
-          <Row>
-            <Col md={6} className="mx-auto">
-              <Card className="shadow-sm custom-card">
-                <Card.Body>
-                  <Card.Title className="text-center">
-                    Predict for a single molecule
-                  </Card.Title>
-                  <Card.Text className="text-center">
-                    Example Input: C1=CC=CC=C1 (Benzene)
-                  </Card.Text>
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="smile" className="mb-3">
-                      <Form.Label>Make Prediction!</Form.Label>
-                      <Form.Control
-                        type="text"
-                        value={smile}
-                        onChange={(e) => setSmile(e.target.value)}
-                        required
-                        placeholder="C1=CC=CC=C1"
-                      />
-                    </Form.Group>
-                    {!loadingSingle && (
-                      <Button type="submit" variant="primary" className="w-100">
-                        Submit
-                      </Button>
-                    )}
-                    {loadingSingle && (
-                      <div className="d-flex justify-content-center">
-                        <Spinner animation="border" role="status">
-                          <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                      </div>
-                    )}
-                  </Form>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+      <CustomNavbar />
+      <Container className="mt-5 custom -card">
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <Card className="custom-title-card">
+              <Card.Body>
+                <Card.Title className="text-center custom-title">NeuralTox Predictor</Card.Title>
+                <Card.Text className="text-center custom-text">
+                  Enter a SMILES string, draw a molecule, or upload a CSV for toxicity prediction.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <PredictionTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <Card className="mt-3 shadow-sm custom-card">
+              <Card.Body>
+                {/* Single Prediction Form */}
+                {activeTab === "single" && (
+                  <SinglePredictionForm
+                    smile={smile}
+                    setSmile={setSmile}
+                    handleSubmit={handleSubmit}
+                    loadingSingle={loadingSingle}
+                  />
+                )}
 
-        <Container className="mt-5">
-          <Row>
-            <Col md={6} className="mx-auto">
-              <Card className="shadow-sm custom-card">
-                <Card.Body>
-                  <Card.Title className="text-center">
-                    Or Submit a CSV File
-                  </Card.Title>
-                  <Form onSubmit={handleFileSubmit}>
-                    <Form.Group controlId="file" className="mb-3">
-                      <Form.Label>Upload CSV</Form.Label>
-                      <Form.Control
-                        type="file"
-                        onChange={(e) => setFile(e.target.files[0])}
-                        required
-                      />
-                    </Form.Group>
-                    {!loadingFile && (
-                      <Button type="submit" variant="primary" className="w-100">
-                        Submit
-                      </Button>
-                    )}
-                    {loadingFile && (
-                      <div className="d-flex justify-content-center">
-                        <Spinner animation="border" role="status">
-                          <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                      </div>
-                    )}
-                  </Form>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+                {/* Batch Prediction Form */}
+                {activeTab === "batch" && (
+                  <BatchPredictionForm
+                    file={file}
+                    setFile={setFile}
+                    handleFileSubmit={handleFileSubmit}
+                    loadingFile={loadingFile}
+                  />
+                )}
 
-        {result && (
-          <Container className="mt-5">
-            <Row>
-              <Col md={6} className="mx-auto">
-                <Card className="shadow-sm">
-                  <Card.Body>
-                    <Card.Title className="text-center">
-                      Prediction Results
-                    </Card.Title>
-                    <Alert variant="success custom-alert">
-                      {result.type === "single" ? (
-                        <p>The molecule is {result.value}</p>
-                      ) : (
-                        <ul>
-                          {result.value.map((res, index) => (
-                            <li key={index}>
-                              Molecule {index + 1} is {res}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </Alert>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        )}
-        {error && (
-          <Alert variant="danger" className="mt-3">
-            {error}
-          </Alert>
-        )}
-      </div>
+                {/* MiniBatch Prediction Form */}
+                {activeTab === "miniBatch" && (
+                  <MiniBatchPredictionForm
+                    miniBatch={miniBatch}
+                    setMiniBatch={setMiniBatch}
+                    handleMiniBatchSubmit={handleMiniBatchSubmit}
+                    loadingMiniBatch={loadingMiniBatch}
+                  />
+                )}
+
+                {/* Jsme Sketcher for Molecule Drawing */}
+                {activeTab === "drawing" && (
+                  <JsmeSketcher
+                    handleDrawingSubmit={handleDrawingSubmit}
+                    loadingDrawing={loadingDrawing}
+                  />
+                )}
+
+                {/* Results */}
+                {result && <Results result={result} />}
+
+                {/* Error Handling */}
+                {error && <Alert variant="danger" className="mt-3 text-center">{error}</Alert>}
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
       <Footer />
     </>
   );

@@ -1,0 +1,15 @@
+/* ToxinDB.css */
+
+.toxindb-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.search-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+.custom-file-input {
+  margin-top: 10px;
+}
