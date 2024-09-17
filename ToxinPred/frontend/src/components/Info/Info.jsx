@@ -1,6 +1,6 @@
 import "./Info.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import flowChart from "../../assets/latest_flowchart.png";
+import flowChart from "../../assets/flowchart_final.png";
 
 
 const Info = () => {
