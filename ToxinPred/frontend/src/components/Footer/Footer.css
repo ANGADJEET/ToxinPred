@@ -1,0 +1,89 @@
+.footer-container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.primary-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 10em;
+}
+
+.panel {
+  float: left;
+  background: none;
+  width: 100%;
+  text-align: center;
+}
+
+.panel .title h1 {
+  color: #ffffff;
+}
+
+.panel .content {
+  padding-top: 25px;
+}
+
+.panel .content p {
+  color: #435059;
+}
+
+.panel .content .button a {
+  background: #d13f31;
+}
+
+.panel .content .button a:hover {
+  background: #1f7872;
+}
+
+.panel .content ul li {
+  list-style: url('images/arrow.png') inside;
+}
+
+.panel .content ul li a {
+  text-decoration: none;
+  color: #435059;
+}
+
+.panel .content ul li a:hover {
+  color: #d13f31;
+}
+
+.copyright-wrap {
+  background:#2fd5e1;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.copyright-wrap .panel {
+  margin: 0 auto;
+  background: none;
+}
+
+.copyright-wrap .panel .content p {
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+}
+
+.copyright-wrap .panel .content p a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.copyright-wrap .panel .content p a:hover {
+  color: #1a202c;
+}
+
+
+.custom-footer-image{
+  width: 30px;
+  height: 23px;
+  margin-top: 5px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

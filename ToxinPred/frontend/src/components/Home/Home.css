@@ -1,0 +1,6 @@
+.home-container {
+  background: #f4f5f8;
+  background-repeat: no-repeat; /* Prevent the gradient from repeating */
+  background-size: cover; /* Ensure the gradient covers the container */
+  background-position: center; /* Center the gradient */
+}

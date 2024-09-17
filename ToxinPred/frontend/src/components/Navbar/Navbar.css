@@ -1,0 +1,49 @@
+.custom-navbar {
+  background-color: #2fd5e1; /* Light blue background for the navbar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjust shadow size and color as needed */
+  transition: background-color 0.1s ease; /* Smooth transition for background color */
+  position: relative;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: #ffffff; /* White text color for better contrast */
+}
+.custom-image{
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.custom-logo{
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Larger font size for the brand */
+  font-weight: bold; /* Bold text for prominence */
+  margin-left: 10px; /* Margin for spacing */
+}
+
+.form-heading{
+  color: #2fd5e1;
+}
+.headings{
+  color: #2fd5e1;
+}
+.nav-item {
+  margin-left: 10px; /* Horizontal spacing between items */
+  margin-right: 10px; /* Horizontal spacing between items */
+  display: flex;
+  padding : 5px;
+}
+
+.custom-navbar .nav-item:hover {
+  color: white; /* Darker blue on hover */
+  background-color: rgba(255, 255, 255, 0.3); /* Slightly lighter background on hover */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-color: #c1c8e4; /* Light violet color for the hamburger icon */
+}
