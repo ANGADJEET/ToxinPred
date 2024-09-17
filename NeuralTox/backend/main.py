@@ -91,3 +91,4 @@ def predict(smile):
     except Exception as e:
         print(f"Error predicting activity: {e}")
         return None
+

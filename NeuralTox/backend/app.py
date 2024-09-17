@@ -50,7 +50,7 @@ def make_prediction_file():
 
         df = pd.read_csv(file)
         if 'SMILES' not in df.columns:
-            raise ValueError("CSV file must contain a 'smile' column")
+            raise ValueError("CSV file must contain a 'SMILES' column")
 
         predictions = []
         for smile in df['SMILES']:
@@ -62,6 +62,33 @@ def make_prediction_file():
         logging.debug(f"Batch prediction results: {predictions}")
 
         response = {'predictions': predictions, 'result-type': 'batch'}
+        return jsonify(response)
+    
+    except Exception as e:
+        logging.error(f"Error occurred: {e}", exc_info=True)
+        return jsonify({'error': f"An error occurred: {str(e)}"}), 500
+
+@app.route('/make-prediction-mini-batch', methods=['POST'])
+def make_prediction_mini_batch():
+    try:
+        data = request.json
+        logging.debug(f"Received data: {data}")
+        #recived comma seperated smiles
+        smiles = data.get('smiles')
+        if not smiles:
+            raise ValueError("SMILES list is missing")
+
+        predictions = []
+        for smile in smiles:
+            prediction = predict(smile)
+            if prediction is None:
+                predictions.append('Error')
+            else:    
+                predictions.append('Non-Toxic' if prediction[0][0] == 0 else 'Toxic')
+
+        logging.debug(f"Mini-batch prediction results: {predictions}")
+
+        response = {'predictions': predictions, 'result-type': 'mini-batch'}
         return jsonify(response)
     
     except Exception as e:

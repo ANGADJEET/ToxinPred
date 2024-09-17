@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
 
-const JsmeSketcher = ({ onMoleculeChange }) => {
+const JsmeSketcher = ({ handleDrawingSubmit, loadingDrawing }) => {
   const [jsmeApplet, setJsmeApplet] = useState(null);
 
   useEffect(() => {
     // Initialize JSME applet
-    if (window.jsmeOnLoad) {
-      window.jsmeOnLoad();
-      setJsmeApplet(window.jsmeApplet);
+    const initializeJsme = () => {
+      if (window.jsmeOnLoad) {
+        window.jsmeOnLoad();
+        const applet = window.jsmeApplet;
+        setJsmeApplet(applet);
+      } else {
+        console.error('JSME onLoad function is not defined.');
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      initializeJsme();
     } else {
-      console.error('jsmeOnLoad function is not defined.');
+      window.addEventListener('load', initializeJsme);
     }
 
     return () => {
-      // Cleanup code if needed
+      window.removeEventListener('load', initializeJsme);
     };
   }, []);
 
-  const getSmiles = () => {
+  const getSmilesAndSubmit = () => {
     if (jsmeApplet) {
-      const smiles = jsmeApplet.smiles();
-      alert(`SMILES string: ${smiles}`);
-      if (onMoleculeChange) {
-        onMoleculeChange(smiles);
+      const smiles = jsmeApplet.smiles(); // Get SMILES string from the sketcher
+      if (handleDrawingSubmit) {
+        handleDrawingSubmit(smiles); // Submit the SMILES string via the prop
       }
     } else {
       console.error('JSME applet is not initialized.');
@@ -30,12 +40,25 @@ const JsmeSketcher = ({ onMoleculeChange }) => {
   };
 
   return (
-    <div className="text-center">
-      <div id="jsme_container" style={{ width: '100%', height: '400px', margin: 'auto' }} />
-      <button onClick={getSmiles} className="mt-3 btn btn-primary">
-        Get SMILES
-      </button>
-    </div>
+    <Container fluid className="my-4 ">
+      <Row className="justify-content-center">
+        <Col md={8} lg={6}>
+          <div id="jsme_container" style={{ width: '100%', height: '400x', marginRight : '400px'}} />
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col md={8} lg={6} className="text-center">
+          <Button
+            onClick={getSmilesAndSubmit}
+            className="mt-3"
+            variant="primary"
+            disabled={loadingDrawing}
+          >
+            {loadingDrawing ? 'Loading...' : 'Predict'}
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

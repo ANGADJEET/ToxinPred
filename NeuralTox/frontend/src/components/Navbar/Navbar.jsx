@@ -8,13 +8,16 @@ import github from "../../assets/icons/github.png";
 import contact from "../../assets/icons/contact.png";
 import cosyslab from "../../assets/icons/cosyslab.png";
 import logo from "../../assets/icons/logo.png";
+import logo2 from "../../assets/icons/logo2.jpeg";
+import toxindb from "../../assets/icons/db.png";
+
 
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg sticky-top custom-navbar">
       <div className="container-fluid">
-        <img src={logo} alt="Site-Logo" className="custom-logo" />
+        <img src={logo2} alt="Site-Logo" className="custom-logo" />
         <Link className="navbar-brand" to="/">
           NeuralTox
         </Link>
@@ -46,7 +49,16 @@ const Navbar = () => {
                 Predict
               </Link>
             </li>
-
+            <li className="nav-item">
+              <img
+                src={toxindb}
+                alt="ToxinDB-Image"
+                className="custom-image"
+              />
+              <Link className="nav-link" to="/toxindb">
+                ToxinDB
+              </Link>
+            </li>
             <li className="nav-item">
               <img
                 src={howToUse}
