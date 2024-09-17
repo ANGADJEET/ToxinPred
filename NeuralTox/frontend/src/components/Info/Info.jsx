@@ -9,15 +9,15 @@ const Info = () => {
       <div className="row">
         <div className="col-lg-8">
           <div className="card mb-4">
-            <div className="card-header">Welcome to NeuralTox!</div>
+            <div className="card-header">Welcome to ToxinPred!</div>
             <div className="card-body">
               <p className="card-text">
-                NeuralTox is a machine learning model for predicting the toxicity
+                ToxinPred is a machine learning model for predicting the toxicity
                 of molecules. It is based on a deep neural network architecture
                 and uses a large dataset of 14,134 molecules with over 20,000
                 molecular descriptors and fingerprints. The model has been
                 trained using a comprehensive feature engineering pipeline and
-                robust feature selection process to optimize performance. NeuralTox
+                robust feature selection process to optimize performance. ToxinPred
                 offers a high-performance predictive model that can be used to
                 predict the toxicity of new molecules with high accuracy.
               </p>
@@ -30,10 +30,10 @@ const Info = () => {
             <div className="card-header">Source Code</div>
             <div className="card-body">
               <p className="card-text">
-                The source code for NeuralTox is available on GitHub. You can
+                The source code for is available on GitHub. You can
                 access the repository by clicking the button below.
               </p>
-              <a href="https://github.com/ANGADJEET/NeuralTox" className="btn btn-primary">
+              <a href="https://github.com/ANGADJEET/ToxinPred" className="btn btn-primary">
                 GitHub Repository
               </a>
             </div>
@@ -42,7 +42,7 @@ const Info = () => {
             <div className="card-header">Features</div>
             <div className="card-body">
               <p className="card-text">
-                NeuralTox offers a range of features to facilitate toxicity
+                ToxinPred offers a range of features to facilitate toxicity
                 prediction. These include:
               </p>
               <ul>
@@ -52,31 +52,6 @@ const Info = () => {
                 <li>Over 20,000 molecular descriptors and fingerprints</li>
                 <li>Robust feature selection process</li>
                 <li>Optimized deep neural network model</li>
-              </ul>
-            </div>
-          </div>
-          <div className="card mb-4">
-            <div className="card-header">FAQ</div>
-            <div className="card-body">
-              <p className="card-text">
-                Frequently Asked Questions about NeuralTox.
-              </p>
-              <ul>
-                <li>
-                  <strong>What is the research goal?</strong>
-                  <br />
-                  To develop computational models for predicting molecular toxicity.
-                </li>
-                <li>
-                  <strong>How many molecules are in the dataset?</strong>
-                  <br />
-                  14,134 molecules (7,550 toxic, 6,514 non-toxic).
-                </li>
-                <li>
-                  <strong>What feature extraction methods were used?</strong>
-                  <br />
-                  RDKit and PaDELPy libraries, generating 20,401 features.
-                </li>
               </ul>
             </div>
           </div>
@@ -102,7 +77,7 @@ const Info = () => {
                 How to Use
               </a>
               <p className="mb-0 info-msg">
-                Instructions on how to use NeuralTox
+                Instructions on how to use ToxinPred
               </p>
             </div>
           </div>
@@ -111,9 +86,9 @@ const Info = () => {
           <div className="card custom-card">
             <div className="card-body">
               <a href="/info" className="d-block h5 mb-1 info-title">
-                NeuralToxPy
+                ToxinPredPy
               </a>
-              <p className="mb-0 info-msg">Python package for NeuralTox</p>
+              <p className="mb-0 info-msg">Python package for ToxinPred</p>
             </div>
           </div>
         </div>

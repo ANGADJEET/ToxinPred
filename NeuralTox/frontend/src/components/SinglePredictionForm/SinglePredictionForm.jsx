@@ -12,7 +12,7 @@ const SinglePredictionForm = ({ smile, setSmile, handleSubmit, loadingSingle }) 
         value={smile}
         onChange={(e) => setSmile(e.target.value)}
         required
-        placeholder="C1=CC=CC=C1 (Benzene)"
+        placeholder="C1=CC=CC=C1"
       />
     </Form.Group>
     {!loadingSingle ? (
