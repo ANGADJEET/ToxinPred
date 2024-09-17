@@ -5,3 +5,4 @@ similar-works/Machine learning models to predict sweetness of molecules.pdf
 NeuralTox/backend/features.csv
 NeuralTox/backend/CRPD.smi
 working-demo/drawing.mp4
+NeuralTox/backend/database/boruta_features.csv

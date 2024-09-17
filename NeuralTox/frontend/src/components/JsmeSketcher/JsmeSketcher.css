@@ -1,0 +1,29 @@
+.custom-card{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-title-card{
+  font-size: 20px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 0%;
+  border: transparent;
+}
+
+.custom-title{
+color: #2fd5e1;
+}
+
+.custom-alert{
+padding: 20px;
+text-align: center;
+}
+.custom-container{
+background-color: #f8f9fa;
+padding: 20px;
+height: 300 px;
+justify-content: center;
+}
