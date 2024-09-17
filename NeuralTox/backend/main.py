@@ -3,6 +3,51 @@ from feature_generation.rdkit_features import generate_rdkit_features
 from feature_generation.padel_features import generate_padel_features
 from feature_selection.feature_selection import select_features
 import tensorflow as tf
+from rdkit import Chem
+from rdkit.Chem import Descriptors, rdMolDescriptors, Draw
+import io
+import base64
+from io import BytesIO
+import traceback
+
+def calculate_properties(smiles):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            raise ValueError("Invalid SMILES string provided.")
+        
+        properties = {
+            "molecularWeight": Descriptors.MolWt(mol),
+            "logP": Descriptors.MolLogP(mol),
+            "tpsa": Descriptors.TPSA(mol),
+            "hbd": Chem.rdMolDescriptors.CalcNumHBD(mol),
+            "hba": Chem.rdMolDescriptors.CalcNumHBA(mol),
+            "rotBonds": Chem.rdMolDescriptors.CalcNumRotatableBonds(mol),
+            "aromaticRings": Chem.rdMolDescriptors.CalcNumAromaticRings(mol),
+            "molecularFormula": Chem.rdMolDescriptors.CalcMolFormula(mol)
+        }
+        return properties
+    except Exception as e:
+        print(f"Error in calculate_properties: {e}")
+        print(traceback.format_exc())
+        return None
+
+def generate_molecule_image(smiles):
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            raise ValueError("Invalid SMILES string provided.")
+        
+        img = Draw.MolToImage(mol, size=(300, 300))
+
+        img_bytes = BytesIO()
+        img.save(img_bytes, format='PNG')
+        img_bytes.seek(0)
+        return img_bytes
+    except Exception as e:
+        print(f"Error in generate_molecule_image: {e}")
+        print(traceback.format_exc())
+        return None
 
 def print_stylish_message(message):
     """Prints a stylish message with line breaks."""

@@ -1,0 +1,54 @@
+.results-container {
+  margin: 20px;
+}
+
+.results-table {
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.properties-table {
+  margin-top: 10px;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.results-table th, .results-table td, 
+.properties-table th, .properties-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.molecule-image {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.single-result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.single-molecule-image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+h4, h5 {
+  color: #333;
+  font-weight: 600;
+}
+
+.pagination {
+  margin-top: 20px;
+}

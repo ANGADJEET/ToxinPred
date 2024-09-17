@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Container, Row, Col, Card, Spinner, Alert } from "react-bootstrap";
+import { Container, Row, Col, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import CustomNavbar from "../Navbar/Navbar";
-import PredictionTabs from "./PredictionTabs/PredictionTabs";
-import SinglePredictionForm from "./SinglePredictionForm/SinglePredictionForm";
-import BatchPredictionForm from "./BatchPredictionForm/BatchPredictionForm";
-import MiniBatchPredictionForm from "./MiniBatchPredictionForm/MiniBatchPredictionForm";
-import Results from "./Results/Results";
+import PredictionTabs from "../PredictionTabs/PredictionTabs";
+import SinglePredictionForm from "../SinglePredictionForm/SinglePredictionForm";
+import BatchPredictionForm from "../BatchPredictionForm/BatchPredictionForm";
+import MiniBatchPredictionForm from "../MiniBatchPredictionForm/MiniBatchPredictionForm";
+import Results from "../PredictionResults/Results";
 import Footer from "../Footer/Footer";
 import JsmeSketcher from "../JsmeSketcher/JsmeSketcher";
 import "./Predict.css";
@@ -96,7 +96,7 @@ const Predict = () => {
           <Col md={8}>
             <Card className="custom-title-card">
               <Card.Body>
-                <Card.Title className="text-center custom-title">NeuralTox Predictor</Card.Title>
+                <Card.Title className="text-center custom-title">ToxinPred Predictor</Card.Title>
                 <Card.Text className="text-center custom-text">
                   Enter a SMILES string, draw a molecule, or upload a CSV for toxicity prediction.
                 </Card.Text>

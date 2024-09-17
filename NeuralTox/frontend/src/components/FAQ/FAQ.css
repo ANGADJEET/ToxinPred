@@ -1,0 +1,73 @@
+/* Main container for padding and alignment */
+.container {
+    margin-top: 20px;
+  }
+  
+  /* Styling for the cards */
+  .card {
+    border-radius: 8px;
+  }
+  
+  /* Customizing the header */
+  .card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2fd5e1; /* Custom color */
+  }
+  
+  /* Styling for the card body */
+  .card-body {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    color: #6c757d; /* Custom body text color */
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Adding a custom shadow and hover effect for the cards */
+  .custom-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .custom-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Styling for the title links */
+  .info-title {
+    color: #2fd5e1;
+    text-decoration: none;
+  }
+  
+  .info-title:hover {
+    text-decoration: underline;
+  }
+  
+  /* Info message styling */
+  .info-msg {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  /* Button styling */
+  .btn {
+    background-color: #2fd5e1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: rgba(47, 166, 225, 0.7);
+  }
+  
+  /* Image container for additional styling */
+  .img-container {
+    border: 1px solid #dee2e6;
+  }
+  
