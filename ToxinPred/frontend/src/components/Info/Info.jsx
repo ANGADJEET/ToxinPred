@@ -85,10 +85,10 @@ const Info = () => {
         <div className="col-md-4 mb-3">
           <div className="card custom-card">
             <div className="card-body">
-              <a href="/info" className="d-block h5 mb-1 info-title">
-                ToxinPredPy
-              </a>
-              <p className="mb-0 info-msg">Python package for ToxinPred</p>
+            <a href="/requirements.txt" download className="d-block h5 mb-1 info-title">
+              Download
+            </a>
+            <p className="mb-0 info-msg">Download the python packages to run this project locally</p>
             </div>
           </div>
         </div>

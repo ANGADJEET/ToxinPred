@@ -76,7 +76,7 @@ const HowToUse = () => {
                       <p>
                         <h5>Batch Prediction</h5>
                         <ul>
-                          <li>Prepare CSV File: Create a CSV file with a column named 'SMILES'. In this column, enter the SMILES strings of the molecules you want to analyze. Ensure that the CSV file is in UTF-8 encoding. Also enter your mail.</li>
+                          <li>Prepare CSV File: Create a CSV file with a column named 'SMILES'. In this column, enter the SMILES strings of the molecules you want to analyze. Ensure that the CSV file has a SMILE coloumn that has the smiles . Also enter your mail.</li>
                           <li>Upload CSV: Click the "Choose File" button to select the prepared CSV file.</li>
                           <li>Submit: Click the "Submit" button to start the batch prediction.</li>
                           <li>View Results: The results will be sent to your mail . It might take some time depending the number of molecules in the csv file.</li>
@@ -97,7 +97,7 @@ const HowToUse = () => {
                         <ul>
                           <li>Draw Molecule: Use the drawing tool to sketch the molecule's structure.</li>
                           <li>Submit: Click the "Submit" button to initiate the prediction.</li>
-                          <li>View Results: The prediction results will be displayed in a table at the bottom of the page, indicating whether the molecule is predicted to be toxic or non-toxic.</li>
+                          <li>View Results: The prediction results will be displayed at the bottom of the page, the molecule is predicted to be toxic or non-toxic.</li>
                         </ul>
                       </p>
                     </div>
@@ -113,8 +113,7 @@ const HowToUse = () => {
 
                         <h5>MiniBatch Prediction</h5>
                         <ul>
-                          <li>Enter SMILES or Upload CSV: Provide the SMILES strings or upload a CSV file as in the Single Prediction or Batch Prediction sections.</li>
-                          <li>Specify Batch Size: Set the desired batch size for processing the molecules.</li>
+                          <li>Enter SMILES: Provide the SMILES strings in each row .</li>
                           <li>Submit: Click the "Submit" button to start the mini-batch prediction.</li>
                           <li>View Results: The results will be displayed in a table, with each row representing the toxicity of the molecule.</li>
                         </ul>
@@ -158,7 +157,7 @@ const HowToUse = () => {
                       <p>
                         <h5>Batch Prediction</h5>
                         <ul>
-                          <li>Prepare CSV File: Create a CSV file with a column named 'SMILES'. In this column, enter the SMILES strings of the molecules you want to analyze. Ensure that the CSV file is in UTF-8 encoding.</li>
+                          <li>Prepare CSV File: Create a CSV file with a column named 'SMILES'. In this column, enter the SMILES strings of the molecules you want to analyze. Ensure that the CSV file is in UTF-8 encoding and has a SMILE named coloumn.</li>
                           <li>Upload CSV: Click the "Choose File" button to select the prepared CSV file.</li>
                           <li>Submit: Click the "Submit" button to start the batch prediction.</li>
                           <li>View Results: The results will be displayed in a small pages, with each page representing a molecule and its corresponding properties.</li>
@@ -193,8 +192,7 @@ const HowToUse = () => {
                       <p>
                         <h5>MiniBatch Prediction</h5>
                         <ul>
-                          <li>Enter SMILES or Upload CSV: Provide the SMILES strings or upload a CSV file as in the Single Prediction or Batch Prediction sections.</li>
-                          <li>Specify Batch Size: Set the desired batch size for processing the molecules.</li>
+                          <li>Enter SMILES: Provide the SMILES  as in the Single Prediction .</li>
                           <li>Submit: Click the "Submit" button to start the mini-batch prediction.</li>
                           <li>View Results: The results will be displayed in a small page, with each page representing a molecule and its predicted properties.</li>
                         </ul>
