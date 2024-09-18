@@ -9,6 +9,7 @@ import io
 import base64
 from io import BytesIO
 import traceback
+import pubchempy as pcp
 
 def calculate_properties(smiles):
     try:
@@ -26,6 +27,14 @@ def calculate_properties(smiles):
             "aromaticRings": Chem.rdMolDescriptors.CalcNumAromaticRings(mol),
             "molecularFormula": Chem.rdMolDescriptors.CalcMolFormula(mol)
         }
+
+        # Fetch the IUPAC name using pubchempy
+        compounds = pcp.get_compounds(smiles, 'smiles')
+        if compounds and compounds[0].iupac_name:
+            properties["iupacName"] = compounds[0].iupac_name
+        else:
+            properties["iupacName"] = "IUPAC name not available"
+
         return properties
     except Exception as e:
         print(f"Error in calculate_properties: {e}")

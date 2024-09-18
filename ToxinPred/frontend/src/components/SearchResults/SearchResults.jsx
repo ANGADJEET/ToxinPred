@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Pagination, Table, Alert } from "react-bootstrap";
+import { Pagination, Table, Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import './SearchResults.css';
 
 const SearchResults = ({ result }) => {
@@ -8,11 +8,9 @@ const SearchResults = ({ result }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Reset the error state when a new result is provided
     setError(null);
   }, [result]);
 
-  // Error checking function to ensure result data is valid
   const isValidResult = (result) => {
     if (!result || !result.type) {
       return false;
@@ -29,26 +27,23 @@ const SearchResults = ({ result }) => {
     return true;
   };
 
-  // If result is invalid, set an error
   useEffect(() => {
     if (!isValidResult(result)) {
       setError("Invalid result data. Please try again.");
     }
   }, [result]);
 
-  // Pagination handler
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Determine the items to show based on the current page
   const paginatedItems = result && result.type !== "single"
     ? result.value.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage)
-    : []; // Use an empty array if result.type is "single" or invalid
+    : [];
 
   const totalPages = result && result.type !== "single"
     ? Math.ceil(result.value.length / itemsPerPage)
-    : 1; // Set totalPages to 1 if result.type is "single" or invalid
+    : 1;
 
   const renderPagination = () => (
     totalPages > 1 && (
@@ -89,11 +84,15 @@ const SearchResults = ({ result }) => {
     </Table>
   );
 
+  const truncateSMILES = (smiles, maxLength = 30) => (
+    smiles.length > maxLength ? `${smiles.substring(0, maxLength)}...` : smiles
+  );
+
   const renderResultTable = (items) => (
     <Table striped bordered hover className="results-table">
       <thead>
         <tr>
-          <th>#</th>
+          <th className="narrow-column">#</th> {/* Apply narrow column class */}
           <th>SMILES</th>
           <th>Properties</th>
           <th>Molecule Image</th>
@@ -103,7 +102,14 @@ const SearchResults = ({ result }) => {
         {items && items.map((item, index) => (
           <tr key={index}>
             <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
-            <td>{item.smiles || `SMILES ${(currentPage - 1) * itemsPerPage + index + 1}`}</td>
+            <td>
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip id={`tooltip-${index}`}>{item.smile}</Tooltip>}
+              >
+                <span>{truncateSMILES(item.smile)}</span>
+              </OverlayTrigger>
+            </td>
             <td>{item.properties ? renderPropertiesTable(item.properties) : "N/A"}</td>
             <td>
               {item.image ? (
@@ -144,6 +150,7 @@ const SearchResults = ({ result }) => {
 
       {result && result.type === "single" && (
         <div className="single-result">
+          <h4>SMILES: {truncateSMILES(result.smiles)}</h4> {/* Truncated SMILES for single result */}
           <h4>Properties</h4>
           {result.value.properties ? renderPropertiesTable(result.value.properties) : <p>No properties available</p>}
           <h4>Molecule Image</h4>

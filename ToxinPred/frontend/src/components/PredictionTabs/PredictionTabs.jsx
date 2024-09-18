@@ -9,7 +9,7 @@ const PredictionTabs = ({ activeTab, setActiveTab }) => (
           href="#"
           onClick={() => setActiveTab(tab)}
         >
-          {tab.charAt(0).toUpperCase() + tab.slice(1)} Prediction
+          {tab.charAt(0).toUpperCase() + tab.slice(1)}
         </a>
       </li>
     ))}

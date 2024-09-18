@@ -2,7 +2,7 @@ import { Card,Form, Button, Spinner } from "react-bootstrap";
 import "./SinglePredictionForm.css";
 const SinglePredictionForm = ({ smile, setSmile, handleSubmit, loadingSingle }) => (
   <Card className="p-3 custom-card">
-    <Card.Title className="text-center custom-title">Single Prediction</Card.Title>
+    <Card.Title className="text-center custom-title">Single</Card.Title>
     <Card.Body>
   <Form onSubmit={handleSubmit}>
     <Form.Group controlId="smile" className="mb-3">

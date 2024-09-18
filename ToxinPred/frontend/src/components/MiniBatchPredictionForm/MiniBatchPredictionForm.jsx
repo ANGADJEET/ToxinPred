@@ -7,7 +7,7 @@ const MiniBatchPredictionForm = ({
   loadingMiniBatch,
 }) => (
   <Card className="p-3 custom-card">
-  <Card.Title className="text-center custom-title">MiniBatch Prediction</Card.Title>
+  <Card.Title className="text-center custom-title">MiniBatch</Card.Title>
   <Card.Body>
   <Form onSubmit={handleMiniBatchSubmit}>
     <Form.Group controlId="miniBatch" className="mb-3">
