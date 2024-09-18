@@ -17,23 +17,24 @@ const FAQ = () => {
               <div className="card-header">Q1: What are the various services provided by the ToxiPredictor web server?</div>
               <div className="card-body">
                 <p className="card-text">
-                  BitterSweet provides the following services:
+                  ToxiPredictor provides the following services:
                   <ul>
-                    <li>Categorical prediction of bitter and sweet tastes of small molecules.</li>
-                    <li>Prediction of receptors linked to bitter molecules.</li>
-                    <li>Batch prediction of compounds (up to 200).</li>
-                    <li>Structured exploration of curated information on bitter and sweet molecules.</li>
-                    <li>Structured exploration of predicted information on bitter-sweet taste of molecules from Super Natural II, FooDB, FlavorDB, DrugBank, and DSSTox.</li>
+                    <li>Single molecule toxicity prediction by inputting a SMILES string.</li>
+                    <li>Batch toxicity prediction by uploading a CSV file containing multiple SMILES strings.</li>
+                    <li>Prediction interface for user interaction with the server.</li>
+                    <li>Model workflow visualization on the landing page for an overview of prediction processes.</li>
+                    <li>Molecular drawing feature with JSME for visual representation of molecular structures.</li>
                   </ul>
                 </p>
+
               </div>
             </div>
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q2: Which web browsers are supported by BitterSweet?</div>
+              <div className="card-header">Q2: Which web browsers are supported by ToxiPredictor?</div>
               <div className="card-body">
                 <p className="card-text">
-                  BitterSweet has been tested to run successfully on the following systems:
+                  ToxiPredictor has been tested to run successfully on the following systems:
                   <table className="table">
                     <thead>
                       <tr>
@@ -80,9 +81,17 @@ const FAQ = () => {
               <div className="card-header">Q3: Is the web server mobile friendly?</div>
               <div className="card-body">
                 <p className="card-text">
-                  While all the functionality of BitterSweet can be accessed using a mobile browser, BitterSweet is best viewed on mid to large screen sizes.
+                  The ToxiPredictor web server implements several security measures to protect user data:
+                  <ul>
+                    <li><strong>Secure Data Transmission:</strong> All data transmitted between users and the server is encrypted using HTTPS, ensuring that sensitive information is protected from interception during transmission.</li>
+                    <li><strong>Data Storage and Privacy:</strong> User data and SMILES strings are securely stored and managed. Access to user data is restricted to authorized personnel only, and data is handled in accordance with privacy policies.</li>
+                    <li><strong>Input Validation:</strong> The server performs rigorous validation of user inputs to prevent injection attacks and other security vulnerabilities. This helps in ensuring that only properly formatted and safe data is processed.</li>
+                    <li><strong>Authentication and Authorization:</strong> For sensitive operations or data access, the server implements authentication mechanisms to ensure that only authorized users can perform specific actions or view certain data.</li>
+                    <li><strong>Regular Security Audits:</strong> The web server undergoes regular security audits and updates to address potential vulnerabilities and ensure that security protocols are up-to-date with the latest standards.</li>
+                  </ul>
                 </p>
               </div>
+
             </div>
 
             <div className="custom-card card mt-4">
@@ -98,7 +107,7 @@ const FAQ = () => {
               <div className="card-header">Q5: How can I contact the support team?</div>
               <div className="card-body">
                 <p className="card-text">
-                  You can contact the support team via the contact form on our website, or by sending an email to support@bittersweet.com.
+                  You can contact the support team via the contact form on our website, or by sending an email to support@ToxiPredictor.com.
                 </p>
               </div>
             </div>
@@ -107,7 +116,7 @@ const FAQ = () => {
               <div className="card-header">Q6: Where can I find documentation and user guides?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Documentation and user guides can be found in the 'Help' section of our website or by visiting the following link: <a href="https://docs.bittersweet.com" target="_blank" rel="noopener noreferrer">Documentation</a>.
+                  Documentation and user guides can be found in the 'How to use' section of our website.
                 </p>
               </div>
             </div>
@@ -116,28 +125,21 @@ const FAQ = () => {
               <div className="card-header">Q7: How often is the data updated?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Data is updated regularly to ensure accuracy and relevance. Updates are typically made on a quarterly basis.
+                  Data is updated regularly to ensure accuracy and relevance. Updates are typically made on a quarterly basis, though the frequency may vary based on new research, data availability, and system improvements.
+                </p>
+              </div>
+
+            </div>
+
+            <div className="custom-card card mt-4">
+              <div className="card-header">Q8: Are there any costs associated with using Toxipredictor?</div>
+              <div className="card-body">
+                <p className="card-text">
+                  Toxipredictor offers both free and premium services. Basic features are available at no cost, while advanced features may require a subscription or payment.
                 </p>
               </div>
             </div>
 
-            <div className="custom-card card mt-4">
-              <div className="card-header">Q8: Can I contribute to the BitterSweet database?</div>
-              <div className="card-body">
-                <p className="card-text">
-                  Contributions to the BitterSweet database are welcome. Please contact us through the 'Contribute' section on our website for more details on how to contribute.
-                </p>
-              </div>
-            </div>
-
-            <div className="custom-card card mt-4">
-              <div className="card-header">Q9: Are there any costs associated with using BitterSweet?</div>
-              <div className="card-body">
-                <p className="card-text">
-                  BitterSweet offers both free and premium services. Basic features are available at no cost, while advanced features may require a subscription or payment.
-                </p>
-              </div>
-            </div>
           </div>
         );
       case "predict":
@@ -145,28 +147,34 @@ const FAQ = () => {
           <div className="container mt-4">
             {/* Predict FAQs */}
             <div className="custom-card card mt-4">
-              <div className="card-header">Q1: Which input formats are supported by BitterSweet for generating predictions?</div>
+              <div className="card-header">Q1: Which input formats are supported by Toxipredictor for generating predictions?</div>
               <div className="card-body">
                 <p className="card-text">
-                  One or more chemical identifiers (SMILES / InChI / SDF / MOL File / PubChem ID / ZINC15 ID).
+                  Toxipredictor supports the following input formats for generating predictions:
+                  <ul>
+                    <li>SMILES strings</li>
+                    <li>CSV files in the proper format. The CSV file must include a column named 'SMILES' containing the SMILES strings.</li>
+                  </ul>
                 </p>
               </div>
+
             </div>
 
             <div className="custom-card card mt-4">
               <div className="card-header">Q2: How do I interpret the prediction output?</div>
               <div className="card-body">
                 <p className="card-text">
-                  For information regarding interpretation of prediction output, please click here.
+                  For information regarding interpretation of prediction output, please visit the Results part<a href="/how-to-use" target="_blank" rel="noopener noreferrer">How to Use</a> page.
                 </p>
               </div>
             </div>
+
 
             <div className="custom-card card mt-4">
               <div className="card-header">Q3: Can I get predictions for multiple molecules at once?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Yes, you can upload a batch of up to 200 molecules at a time for batch prediction.
+                  Yes, you can upload a batch of up to 100 molecules at a time for batch prediction.
                 </p>
               </div>
             </div>
@@ -175,16 +183,17 @@ const FAQ = () => {
               <div className="card-header">Q4: Are there any limitations on the number of predictions I can make?</div>
               <div className="card-body">
                 <p className="card-text">
-                  While there is no strict limit on the number of predictions, large-scale batch predictions may be subject to usage policies and performance considerations.
+                  While there is no strict limit on the number of predictions, large-scale batch predictions may be subject to usage policies and performance considerations. If features for a SMILES string cannot be generated, the system will return an error indicating the issue with that specific input.
                 </p>
               </div>
             </div>
 
+
             <div className="custom-card card mt-4">
-              <div className="card-header">Q5: How accurate are the predictions made by BitterSweet?</div>
+              <div className="card-header">Q5: How accurate are the predictions made by Toxipredictor?</div>
               <div className="card-body">
                 <p className="card-text">
-                  The accuracy of predictions depends on the quality of the input data and the underlying models. BitterSweet uses state-of-the-art methods to provide reliable predictions.
+                  The accuracy of predictions depends on the quality of the input data and the underlying models. toxipredictor uses state-of-the-art methods to provide reliable predictions.
                 </p>
               </div>
             </div>
@@ -193,10 +202,11 @@ const FAQ = () => {
               <div className="card-header">Q6: Can I see examples of prediction results?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Examples of prediction results can be found in the 'Examples' section on our website or by requesting sample data from the support team.
+                  You can see how the results look like in the <a href="/how-to-use" target="_blank">How to Use</a> section on our website. This section provides detailed examples of prediction results and how to interpret them.
                 </p>
               </div>
             </div>
+
 
             <div className="custom-card card mt-4">
               <div className="card-header">Q7: What should I do if I encounter issues with predictions?</div>
@@ -213,52 +223,48 @@ const FAQ = () => {
           <div className="container mt-4">
             {/* Search FAQs */}
             <div className="custom-card card mt-4">
-              <div className="card-header">Q1: What kind of search methods and look up methods are available for molecules on top which the server is created?</div>
+              <div className="card-header">Q1: What types of molecular structures can be predicted using the SMILES string?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Search of molecules is available by the use of the following parameters:
+                  The server can predict various molecular structures based on a given SMILES string, including:
                   <ul>
-                    <li>Common Name</li>
-                    <li>IUPAC Name</li>
-                    <li>PubChem ID</li>
-                    <li>Functional Group</li>
-                    <li>Source of molecule: DrugBank, FooDB, FlavorDB, Super Natural II, and DSSTox.</li>
-                    <li>Bitter, Sweet, and Tasteless molecules</li>
-                    <li>Linked Bitter Receptors</li>
-                    <li>Structure Search (using JSME Molecular Editor)</li>
-                    <li>Molecular Properties</li>
+                    <li>2D molecular structure diagrams</li>
+                    <li>3D molecular conformations</li>
+                    <li>Bond connectivity and atom types</li>
+                    <li>Functional groups and their locations</li>
                   </ul>
                 </p>
               </div>
             </div>
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q2: What are functional groups and how were they obtained?</div>
+              <div className="card-header">Q2: How are the physicochemical properties of a molecule determined from its SMILES string?</div>
               <div className="card-body">
                 <p className="card-text">
-                  The ‘functional group’ is an atom, or a group of atoms that has similar chemical properties whenever it occurs in different compounds. It defines the characteristic physical and chemical properties of families of organic compounds. The functional groups were obtained using Checkmol, a free and open-source tool, which detects and assigns functional group information on small molecules.
+                  Physicochemical properties such as molecular weight, solubility, and polarity are determined using algorithms that interpret the SMILES string and apply relevant chemical property prediction models. These properties provide insights into the molecule's behavior in various environments.
                 </p>
               </div>
             </div>
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q3: Can I search for molecules by their properties?</div>
+              <div className="card-header">Q3: Can I visualize the molecular structure derived from a SMILES string?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Yes, you can search for molecules based on various properties such as molecular weight, solubility, and more.
+                  Yes, you can visualize the molecular structure derived from a SMILES string using interactive visualization tools integrated into the server. This allows for detailed examination of the molecule's structure.
                 </p>
               </div>
             </div>
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q4: How can I search for molecules linked to specific receptors?</div>
+              <div className="card-header">Q4: Are there any limitations on the types of molecules for which predictions can be made?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Use the 'Linked Bitter Receptors' search option to find molecules associated with specific receptors.
+                  The server supports a wide range of molecules, but predictions may be limited for highly complex or unusual structures. Additionally, if features cannot be generated from a SMILES string, an error will be reported.
                 </p>
               </div>
             </div>
           </div>
+
         );
       default:
         return null;

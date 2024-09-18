@@ -27,3 +27,21 @@ padding: 20px;
 height: 300 px;
 justify-content: center;
 }
+.results-table, .properties-table {
+  text-align: center;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.molecule-image, .single-molecule-image, .drawing-molecule-image {
+  max-width: 100px;
+  height: auto;
+}
+
+.results-container {
+  margin-top: 20px;
+}
+
+tr td span {
+  cursor: pointer;
+}

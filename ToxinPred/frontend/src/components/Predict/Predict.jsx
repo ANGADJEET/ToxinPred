@@ -23,50 +23,81 @@ const Predict = () => {
   const [miniBatch, setMiniBatch] = useState("");
   const [activeTab, setActiveTab] = useState("single");
 
+  // Function to handle different types of errors more gracefully
+  const handleError = (error) => {
+    if (error.response) {
+      return error.response.data?.error || "Server Error";
+    } else if (error.request) {
+      return "Network Error: Unable to reach the server!";
+    } else {
+      return "Client Error: Something went wrong!";
+    }
+  };
+  
+  const handleTabChange = (newTab) => {
+    // Clear results and errors when switching tabs
+    setActiveTab(newTab);
+    setResult(null);
+    setError(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoadingSingle(true);
     setResult(null);
     try {
       const response = await axios.post("http://localhost:5000/make-prediction", { smile });
-      setResult({ type: "single", value: response.data.prediction });
+      setResult({ type: "single", value: response.data, smiles: smile });
       setError(null);
     } catch (error) {
-      setError("Error making prediction!");
+      setError(handleError(error));
       setResult(null);
     } finally {
       setLoadingSingle(false);
     }
   };
 
-  const handleFileSubmit = async (e) => {
-    e.preventDefault();
+  const handleFileSubmit = (file, email) => {
+    // If the email is not provided, set it to null
+    const submittedEmail = email || null;
+    
+    // Prepare the data to be sent, including the file and the email (which could be null)
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("email", submittedEmail);  // Email can be null if not provided
+
     setLoadingFile(true);
     setResult(null);
-    try {
-      const response = await axios.post("http://localhost:5000/make-prediction-file", formData);
-      setResult({ type: "batch", value: response.data.predictions });
-      setError(null);
-    } catch (error) {
-      setError("Error making batch prediction!");
-      setResult(null);
-    } finally {
-      setLoadingFile(false);
-    }
+    axios.post("http://localhost:5000/make-prediction-file", formData)
+      .then((response) => {
+        setResult({ type: "batch", value: response.data, email: submittedEmail, smiles: response.data.map((pred) => pred.smile) });
+        setError(null);
+      })
+      .catch((error) => {
+        setError(handleError(error));
+        setResult(null);
+      })
+      .finally(() => setLoadingFile(false));
+
   };
+  
 
   const handleMiniBatchSubmit = async (e) => {
     e.preventDefault();
     setLoadingMiniBatch(true);
     setResult(null);
     try {
-      const response = await axios.post("http://localhost:5000/make-prediction-mini-batch", { smiles: miniBatch.split("\n") });
-      setResult({ type: "miniBatch", value: response.data.predictions });
+      const response = await axios.post("http://localhost:5000/make-prediction-mini-batch", {
+      smiles: miniBatch.split("\n"),
+     });
+      setResult({ 
+        type: "miniBatch", 
+        value: response.data,
+         smiles: response.data.map((pred) => pred.smile) 
+      });
       setError(null);
     } catch (error) {
-      setError("Error making mini-batch prediction!");
+      setError(handleError(error));
       setResult(null);
     } finally {
       setLoadingMiniBatch(false);
@@ -78,10 +109,10 @@ const Predict = () => {
     setResult(null);
     try {
       const response = await axios.post("http://localhost:5000/make-prediction", { smile: smiles });
-      setResult({ type: "single", value: response.data.prediction });
+      setResult({ type: "single", value: response.data, smiles: smiles });
       setError(null);
     } catch (error) {
-      setError("Error making prediction from drawing!");
+      setError(handleError(error));
       setResult(null);
     } finally {
       setLoadingDrawing(false);
@@ -91,7 +122,7 @@ const Predict = () => {
   return (
     <>
       <CustomNavbar />
-      <Container className="mt-5 custom -card">
+      <Container className="mt-5">
         <Row className="justify-content-center">
           <Col md={8}>
             <Card className="custom-title-card">
@@ -102,7 +133,7 @@ const Predict = () => {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <PredictionTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <PredictionTabs activeTab={activeTab} setActiveTab={handleTabChange} />
             <Card className="mt-3 shadow-sm custom-card">
               <Card.Body>
                 {/* Single Prediction Form */}
@@ -153,7 +184,7 @@ const Predict = () => {
           </Col>
         </Row>
       </Container>
-      <Footer />
+    <Footer />
     </>
   );
 };
