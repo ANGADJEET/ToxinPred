@@ -1,3 +1,11 @@
+/* .card-body img {
+  border: 1px solid #dee2e6;
+  padding: 5px;
+  width: 600px;
+  height: 300px; 
+  object-fit: cover;  
+} */
+
 body {
     padding-top: 10px;
   }
@@ -23,14 +31,14 @@ body {
     height: calc(100vh - 15px);
     padding-top: 0.5rem;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable menu */
+    overflow-y: auto;
   border-radius: 8px;
   padding : 10px;
   transition: box-shadow 0.3s ease;
   }
   
   .content-area {
-    margin-left: 200px; /* Adjust based on sidebar width */
+    margin-left: 200px; 
     padding: 20px;
   }
   

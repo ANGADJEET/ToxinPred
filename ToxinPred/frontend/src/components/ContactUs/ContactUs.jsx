@@ -21,7 +21,7 @@ const ContactUs = () => {
                       R&D Building ,<br />
                       Okhla Phase III, Near Govindpuri Metro Station,<br />
                       New Delhi, India 110020.<br />
-                      <b>Email: </b><a href="mailto:bagler+BitterSweet@iiitd.ac.in">bagler+BitterSweet@iiitd.ac.in</a><br />
+                      <b>Email: </b><a href="mailto:cosylab.iiitd@gmail.com">cosylab.iiitd@gmail.com</a><br />
                       <b>Tel:</b> +91-11-26907-443 (Work)
                     </p>
                   </div>

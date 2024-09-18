@@ -2,44 +2,42 @@ import pandas as pd
 from feature_generation.rdkit_features import generate_rdkit_features
 from feature_generation.padel_features import generate_padel_features
 from feature_selection.feature_selection import select_features
-import tensorflow as tf
 from rdkit import Chem
-from rdkit.Chem import Descriptors, rdMolDescriptors, Draw
-import io
-import base64
+from rdkit.Chem import Descriptors, Draw
 from io import BytesIO
 import traceback
+import pickle
 import pubchempy as pcp
 
 def calculate_properties(smiles):
     try:
         mol = Chem.MolFromSmiles(smiles)
-        if mol is None:
+        if not mol:
             raise ValueError("Invalid SMILES string provided.")
         
         properties = {
+            "molecularFormula": Chem.rdMolDescriptors.CalcMolFormula(mol),
             "molecularWeight": Descriptors.MolWt(mol),
             "logP": Descriptors.MolLogP(mol),
             "tpsa": Descriptors.TPSA(mol),
             "hbd": Chem.rdMolDescriptors.CalcNumHBD(mol),
             "hba": Chem.rdMolDescriptors.CalcNumHBA(mol),
             "rotBonds": Chem.rdMolDescriptors.CalcNumRotatableBonds(mol),
-            "aromaticRings": Chem.rdMolDescriptors.CalcNumAromaticRings(mol),
-            "molecularFormula": Chem.rdMolDescriptors.CalcMolFormula(mol)
+            "aromaticRings": Chem.rdMolDescriptors.CalcNumAromaticRings(mol)
         }
 
-        # Fetch the IUPAC name using pubchempy
         compounds = pcp.get_compounds(smiles, 'smiles')
-        if compounds and compounds[0].iupac_name:
-            properties["iupacName"] = compounds[0].iupac_name
+        if compounds:
+            properties["iupacName"] = compounds[0].iupac_name or "IUPAC name not available"
+            properties["commonName"] = compounds[0].synonyms[0] if compounds[0].synonyms else "Common name not available"
         else:
-            properties["iupacName"] = "IUPAC name not available"
-
+            properties.update({"iupacName": "IUPAC name not available", "commonName": "Common name not available"})
+        
         return properties
     except Exception as e:
         print(f"Error in calculate_properties: {e}")
-        print(traceback.format_exc())
         return None
+
 
 def generate_molecule_image(smiles):
     try:
@@ -136,11 +134,12 @@ def predict(smile):
 
         print_stylish_message("Making prediction...")
         # Load the model
-        model = tf.keras.models.load_model("toxicity_prediction_model.h5")
-        Y_pred_prob = model.predict(selected_features)
-        Y_pred = (Y_pred_prob > 0.5).astype(int)
-        print("prediction probability: ", Y_pred_prob)
-        print("prediction: ", Y_pred)
+        # model = tf.keras.models.load_model("toxicity_prediction_model.h5")
+        # Y_pred_prob = model.predict(selected_features)
+        
+        model = pickle.load(open("svm_toxicity_model.pkl", "rb"))
+        Y_pred_prob = model.predict_proba(selected_features)[:, 1]
+        Y_pred = "Toxic" if Y_pred_prob > 0.5 else "Non-toxic"
         return Y_pred
     except Exception as e:
         print(f"Error predicting activity: {e}")

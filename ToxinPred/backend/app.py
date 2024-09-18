@@ -19,7 +19,6 @@ import smtplib
 app = Flask(__name__)
 CORS(app)
 
-# Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/make-prediction', methods=['POST'])
@@ -35,7 +34,6 @@ def make_prediction():
             print("SMILES string is missing")
             return jsonify({"error": "SMILES string is required"}), 400
 
-
         prediction = predict(smile)
         
         if prediction is None:
@@ -45,7 +43,8 @@ def make_prediction():
 
         response = {
             'smile': smile,
-            'prediction': ['Non-Toxic' if prediction[0][0] == 0 else 'Toxic'],
+            # 'prediction': ['Non-Toxic' if prediction[0][0] == 0 else 'Toxic'],
+            'prediction': prediction,
             'result-type': 'single'
         }
         return jsonify(response)
@@ -138,7 +137,8 @@ def make_prediction_file():
                 print("Invalid SMILES string provided")
                 return jsonify({"error": "Invalid SMILES string"}), 400
             
-            results.append({"smile": smile, "prediction": 'Non-Toxic' if prediction[0][0] == 0 else 'Toxic'})
+            # results.append({"smile": smile, "prediction": 'Non-Toxic' if prediction[0][0] == 0 else 'Toxic'})
+            results.append({"smile": smile, "prediction": prediction})
         
         results_df = pd.DataFrame(results)
         # Check if an email was provided for sending results
@@ -177,7 +177,8 @@ def make_prediction_mini_batch():
                 print("Invalid SMILES string provided")
                 return jsonify({"error": "Invalid SMILES string"}), 400
 
-            results.append({"smile": smile, "prediction": 'Non-Toxic' if prediction[0][0] == 0 else 'Toxic'})
+            # results.append({"smile": smile, "prediction": 'Non-Toxic' if prediction[0][0] == 0 else 'Toxic'})
+            results.append({"smile": smile, "prediction": prediction})
         return jsonify(results)
     except Exception as e:
         print(f"Exception in predicting_toxin_mini_batch: {e}")

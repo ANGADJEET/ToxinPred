@@ -54,7 +54,7 @@ const JsmeSketcher = ({ handleDrawingSubmit, loadingDrawing }) => {
             variant="primary"
             disabled={loadingDrawing}
           >
-            {loadingDrawing ? 'Loading...' : 'Predict'}
+            {loadingDrawing ? 'Loading...' : 'Submit'}
           </Button>
         </Col>
       </Row>

@@ -23,7 +23,7 @@ const FAQ = () => {
                     <li>Batch toxicity prediction by uploading a CSV file containing multiple SMILES strings.</li>
                     <li>Prediction interface for user interaction with the server.</li>
                     <li>Model workflow visualization on the landing page for an overview of prediction processes.</li>
-                    <li>Molecular drawing feature with JSME for visual representation of molecular structures.</li>
+                    <li>Molecular drawing feature with 2D representation for visual representation of molecular structures.</li>
                   </ul>
                 </p>
 
@@ -81,14 +81,7 @@ const FAQ = () => {
               <div className="card-header">Q3: Is the web server mobile friendly?</div>
               <div className="card-body">
                 <p className="card-text">
-                  The ToxiPredictor web server implements several security measures to protect user data:
-                  <ul>
-                    <li><strong>Secure Data Transmission:</strong> All data transmitted between users and the server is encrypted using HTTPS, ensuring that sensitive information is protected from interception during transmission.</li>
-                    <li><strong>Data Storage and Privacy:</strong> User data and SMILES strings are securely stored and managed. Access to user data is restricted to authorized personnel only, and data is handled in accordance with privacy policies.</li>
-                    <li><strong>Input Validation:</strong> The server performs rigorous validation of user inputs to prevent injection attacks and other security vulnerabilities. This helps in ensuring that only properly formatted and safe data is processed.</li>
-                    <li><strong>Authentication and Authorization:</strong> For sensitive operations or data access, the server implements authentication mechanisms to ensure that only authorized users can perform specific actions or view certain data.</li>
-                    <li><strong>Regular Security Audits:</strong> The web server undergoes regular security audits and updates to address potential vulnerabilities and ensure that security protocols are up-to-date with the latest standards.</li>
-                  </ul>
+                  Yes, the web server is mobile-friendly, as we've used Bootstrap for responsive design.
                 </p>
               </div>
 
@@ -98,7 +91,7 @@ const FAQ = () => {
               <div className="card-header">Q4: What security measures are in place to protect user data?</div>
               <div className="card-body">
                 <p className="card-text">
-                  BitterSweet employs various security measures including data encryption, secure connections (HTTPS), and regular security audits to protect user data and ensure privacy.
+                ToxiPredictor employs various security measures including data encryption, secure connections (HTTPS), and regular security audits to protect user data and ensure privacy.
                 </p>
               </div>
             </div>
@@ -107,7 +100,7 @@ const FAQ = () => {
               <div className="card-header">Q5: How can I contact the support team?</div>
               <div className="card-body">
                 <p className="card-text">
-                  You can contact the support team via the contact form on our website, or by sending an email to support@ToxiPredictor.com.
+                  You can contact the support team via the contact form on our website, or by sending an email to cosylab.iiitd@gmail.com.
                 </p>
               </div>
             </div>
@@ -116,7 +109,7 @@ const FAQ = () => {
               <div className="card-header">Q6: Where can I find documentation and user guides?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Documentation and user guides can be found in the 'How to use' section of our website.
+                  Documentation and user guides can be found in the <a href="/how-to-use" target="_blank">How to Use</a> section of our website.
                 </p>
               </div>
             </div>
@@ -198,18 +191,11 @@ const FAQ = () => {
               </div>
             </div>
 
-            <div className="custom-card card mt-4">
-              <div className="card-header">Q6: Can I see examples of prediction results?</div>
-              <div className="card-body">
-                <p className="card-text">
-                  You can see how the results look like in the <a href="/how-to-use" target="_blank">How to Use</a> section on our website. This section provides detailed examples of prediction results and how to interpret them.
-                </p>
-              </div>
-            </div>
+            
 
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q7: What should I do if I encounter issues with predictions?</div>
+              <div className="card-header">Q6: What should I do if I encounter issues with predictions?</div>
               <div className="card-body">
                 <p className="card-text">
                   If you encounter issues with predictions, please reach out to our support team via the contact form or email us with detailed information about the issue.
@@ -226,13 +212,7 @@ const FAQ = () => {
               <div className="card-header">Q1: What types of molecular structures can be predicted using the SMILES string?</div>
               <div className="card-body">
                 <p className="card-text">
-                  The server can predict various molecular structures based on a given SMILES string, including:
-                  <ul>
-                    <li>2D molecular structure diagrams</li>
-                    <li>3D molecular conformations</li>
-                    <li>Bond connectivity and atom types</li>
-                    <li>Functional groups and their locations</li>
-                  </ul>
+                  The server can predict various molecular structures based on a given SMILES string in 2D molecular structure diagrams.
                 </p>
               </div>
             </div>
@@ -241,16 +221,16 @@ const FAQ = () => {
               <div className="card-header">Q2: How are the physicochemical properties of a molecule determined from its SMILES string?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Physicochemical properties such as molecular weight, solubility, and polarity are determined using algorithms that interpret the SMILES string and apply relevant chemical property prediction models. These properties provide insights into the molecule's behavior in various environments.
+                  Physicochemical properties such as  aromatic rings, hydrogen bond acceptors/donors, logP, molecular formula, molecular weight, rotatable bonds, and topological polar surface area are determined using algorithms that interpret the SMILES string and apply relevant chemical property prediction models. These properties provide insights into the molecule's behavior in various environments.
                 </p>
               </div>
             </div>
 
             <div className="custom-card card mt-4">
-              <div className="card-header">Q3: Can I visualize the molecular structure derived from a SMILES string?</div>
+              <div className="card-header">Q3: Where is the search feature shown?</div>
               <div className="card-body">
                 <p className="card-text">
-                  Yes, you can visualize the molecular structure derived from a SMILES string using interactive visualization tools integrated into the server. This allows for detailed examination of the molecule's structure.
+                The search feature is displayed at the bottom of the search prediction section on the search page sfter entering the smile string. For more details, please refer to the <a href="/how-to-use" target="_blank">How to Use</a> guide.
                 </p>
               </div>
             </div>

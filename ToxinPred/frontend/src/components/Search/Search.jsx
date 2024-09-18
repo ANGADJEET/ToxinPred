@@ -128,7 +128,7 @@
             <Col md={8}>
               <Card className="custom-title-card">
                 <Card.Body>
-                  <Card.Title className="text-center custom-title">ToxinPred Search</Card.Title>
+                  <Card.Title className="text-center custom-title">ToxinPredictor's Search</Card.Title>
                   <Card.Text className="text-center">
                     Enter a SMILES string, draw a molecule, or upload a CSV to search the toxin database.
                   </Card.Text>

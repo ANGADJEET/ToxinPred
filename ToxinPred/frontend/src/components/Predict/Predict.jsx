@@ -127,7 +127,7 @@ const Predict = () => {
           <Col md={8}>
             <Card className="custom-title-card">
               <Card.Body>
-                <Card.Title className="text-center custom-title">ToxinPred Predictor</Card.Title>
+                <Card.Title className="text-center custom-title">Toxin Predictor</Card.Title>
                 <Card.Text className="text-center custom-text">
                   Enter a SMILES string, draw a molecule, or upload a CSV for toxicity prediction.
                 </Card.Text>

@@ -7,7 +7,7 @@ import howToUse from "../../assets/icons/instruction.png";
 import github from "../../assets/icons/github.png";
 import contact from "../../assets/icons/contact.png";
 import cosyslab from "../../assets/icons/cosyslab.png";
-import logo2 from "../../assets/icons/logo.png";
+import logo2 from "../../assets/icons/logo2.png";
 import toxindb from "../../assets/icons/db.png";
 import faq from "../../assets/icons/faq.png"; // Added missing import
 
@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <img src={logo2} alt="Site Logo" className="custom-logo" />
         <Link className="navbar-brand" to="/">
-          ToxinPred
+          ToxinPredictor
         </Link>
         <button
           className="navbar-toggler"
@@ -58,17 +58,6 @@ const Navbar = () => {
               <Link className="nav-link" to="/how-to-use">
                 How to Use
               </Link>
-            </li>
-            <li className="nav-item">
-              <img src={github} alt="GitHub Icon" className="custom-image" />
-              <a
-                className="nav-link"
-                href="https://github.com/ANGADJEET/ToxinPred"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ToxinPred.py
-              </a>
             </li>
             <li className="nav-item">
               <img src={faq} alt="FAQ Icon" className="custom-image" />

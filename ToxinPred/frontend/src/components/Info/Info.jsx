@@ -12,8 +12,8 @@ const Info = () => {
             <div className="card-header">Welcome to ToxinPred!</div>
             <div className="card-body">
               <p className="card-text">
-                ToxinPred is a machine learning model for predicting the toxicity
-                of molecules. It is based on a deep neural network architecture
+                ToxinPredictor is a machine learning model for predicting the toxicity
+                of molecules. It is based on a support vector machine (SVM) model
                 and uses a large dataset of 14,134 molecules with over 20,000
                 molecular descriptors and fingerprints. The model has been
                 trained using a comprehensive feature engineering pipeline and
@@ -30,10 +30,10 @@ const Info = () => {
             <div className="card-header">Source Code</div>
             <div className="card-body">
               <p className="card-text">
-                The source code for is available on GitHub. You can
+                The source code for this project is available on GitHub. You can
                 access the repository by clicking the button below.
               </p>
-              <a href="https://github.com/ANGADJEET/ToxinPred" className="btn btn-primary">
+              <a href="https://github.com/cosylabiiit/ToxinPredictor" className="btn btn-primary">
                 GitHub Repository
               </a>
             </div>
@@ -42,7 +42,7 @@ const Info = () => {
             <div className="card-header">Features</div>
             <div className="card-body">
               <p className="card-text">
-                ToxinPred offers a range of features to facilitate toxicity
+                ToxinPredictor offers a range of features to facilitate toxicity
                 prediction. These include:
               </p>
               <ul>
@@ -77,7 +77,7 @@ const Info = () => {
                 How to Use
               </a>
               <p className="mb-0 info-msg">
-                Instructions on how to use ToxinPred
+                Instructions on how to use ToxinPredictor
               </p>
             </div>
           </div>
